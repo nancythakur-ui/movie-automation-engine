@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome - Movie Automation Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-body">
+
+<div class="login-container">
+    <h1>🎬 Smart Movie Automation Engine</h1>
+    <p class="tagline">
+        Discover movies, series and trending content powered by intelligent recommendation technology.
+        A modern entertainment search experience built for smart viewers.
+    </p>
+
+    <form action="/login" method="post" class="login-form">
+        <input type="text" name="name" placeholder="Enter Your Name" required>
+        <input type="number" name="age" placeholder="Enter Your Age" required>
+        <input type="email" name="email" placeholder="Enter Email ID" required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

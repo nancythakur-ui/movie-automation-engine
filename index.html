@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automation Movie Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">
+    <h1>🎬 Movie Automation Engine</h1>
+    <h3>Welcome, {{ user }} 👋</h3>
+
+    <p class="about">
+        This intelligent automation engine analyzes genre, actors and language
+        to recommend similar movies instantly. Experience smart content discovery
+        designed to make your entertainment search effortless and engaging.
+    </p>
+
+    <form action="/search" method="post">
+        <input type="text" name="query" placeholder="Search movies..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <br>
+    <a href="/logout" style="color: #ffd700;">Logout</a>
+</div>
+
+
+<!-- SEARCH RESULT -->
+<div class="container">
+    {% for movie in movies %}
+    <div class="card">
+        <h3>
+            {{ movie.Title }}
+        </h3>
+        <p><b>Genre:</b> {{ movie.Genre }}</p>
+        <p><b>Language:</b> {{ movie.Language }}</p>
+        <p><b>Provider:</b> {{ movie.Provider }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- SIMILAR MOVIES SECTION -->
+{% if searched_movie %}
+    <h2 class="rec-title">🎯 See Similar Movies</h2>
+
+    <div class="container">
+        {% for rec in recommended %}
+        <div class="card">
+
+            {% if rec.poster %}
+                <img src="{{ rec.poster }}" width="150">
+            {% endif %}
+
+            <h3>{{ rec.title }}</h3>
+
+            <p><b>Year:</b> {{ rec.year }}</p>
+            <p><b>Genre:</b> {{ rec.genre_names }}</p>
+            <p><b>Actors:</b> {{ rec.actors }}</p>
+            <p><b>Available On:</b> {{ rec.providers }}</p>
+            <p><b>Database:</b> {{ rec.database }}</p>
+
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+</body>
+</html>

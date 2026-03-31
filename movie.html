@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie.Title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="movie-detail">
+    <h1>{{ movie.Title }}</h1>
+    <p><b>Year:</b> {{ movie.Year }}</p>
+    <p><b>Genre:</b> {{ movie.Genre }}</p>
+    <p><b>Actors:</b> {{ movie.Actors }}</p>
+    <p><b>Language:</b> {{ movie.Language }}</p>
+    <p><b>Provider:</b> {{ movie.Provider }}</p>
+</div>
+
+<h2 class="rec-title">🎯 Recommended For You</h2>
+
+<div class="container">
+    {% for rec in recommended %}
+    <div class="card">
+        <a href="/movie/{{ rec.Title }}">{{ rec.Title }}</a>
+        <p>{{ rec.Genre }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
